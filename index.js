@@ -13,8 +13,11 @@
     const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
     const PORT = process.env.PORT || 4000
 
+//------ Template Engine
+    app.set('view engine', 'ejs');
+    app.set('views', './src/views')
+
 //------ Middlewares
-    // app.use(cors({ origin:true }))
     app.use(morgan('dev'));
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
@@ -22,7 +25,7 @@
 
 
 //------ Routes
-    app.get('/', (req,res)=> res.send("HOME"))
+    app.get('/', (req,res)=> res.render('index', { head_title:"CSV Translator" }))
     app.get('/api', (req,res)=> res.send("API"))
 
 //------ Listen
