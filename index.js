@@ -1,7 +1,7 @@
 //------ Dependencies
     import express from 'express';
     import morgan from "morgan";
-    //import cors from 'cors'
+    import expressEjsLayouts from 'express-ejs-layouts';
     import path from 'path';
     import * as url from 'url';
 
@@ -21,14 +21,15 @@
     app.use(morgan('dev'));
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
+    app.use(expressEjsLayouts)
     app.use(express.static(path.join(__dirname, 'src/public')))
 
 
 //------ Routes
-    app.get('/', (req,res)=> res.render('index', { head_title:"CSV Translator" }))
+    app.get('/', (req,res)=> res.render('pages/index', { head_title:"CSV Translator" }))
     app.get('/api', (req,res)=> res.send("API"))
 
 //------ Listen
     app.listen(PORT, ()=>{
-    console.log('Server on in port ' + PORT);
+        console.log('Server on in port ' + PORT);
     })
