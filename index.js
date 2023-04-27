@@ -5,8 +5,8 @@
     import path from 'path';
     import * as url from 'url';
 
-//------ Database
-//import { sequelize } from './src/config/sequelize.js';
+//------ Routes
+    import { routerPage } from './src/routes/pages.routes.js';
 
 //------ Config
     const app = express()
@@ -26,7 +26,7 @@
 
 
 //------ Routes
-    app.get('/', (req,res)=> res.render('pages/index', { head_title:"CSV Translator" }))
+    app.use('/', routerPage)
     app.get('/api', (req,res)=> res.send("API"))
 
 //------ Listen
