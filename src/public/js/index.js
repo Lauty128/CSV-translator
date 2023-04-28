@@ -1,6 +1,6 @@
 import table from "./table.js";
 
-const Table = new table(4,7)
+const Table = new table(3,3)
 
 Table.create()
 

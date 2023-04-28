@@ -36,16 +36,54 @@ class table{
 
     newRow(e){
         e.preventDefault()
-        console.log("Hola gatin \nMe dijieron que queres crear una nueva fila ");
-        // const fragment = document.createDocumentFragment()
-        // const p = document.createElement('p')
-        // p.textContent = "HOLA GATIN"
-        // this.table.insertAdjacentElement('beforeend', p)
+        const referenceRow = document.querySelector(".Table__row--reference")
+        this.rows += 1;
+
+        const fragment = document.createDocumentFragment()
+        const div = document.createElement('div')
+        div.classList.add(`Table__row`)
+        div.classList.add(`Table__row${this.rows}`)
+
+        for(let index = 0, total_columns = this.columns; index < total_columns; index++){
+            const input = document.createElement('input')
+            input.classList.add("Table__input")
+            input.setAttribute('name', `Table__${this.rows}-${index + 1}`)
+            input.setAttribute('type', 'text')
+
+            fragment.appendChild(input)
+        }
+
+        const card = document.createElement('div')
+        card.classList.add("Table__input")
+        card.classList.add("Table__input--reference")
+        fragment.appendChild(card)
+
+        div.appendChild(fragment)
+
+        referenceRow.insertAdjacentElement('beforebegin', div)
     }
 
     newColumn(e){
         e.preventDefault()
-        console.log("Hola gatin \nMe dijieron que queres crear una nueva columna ");
+        this.columns += 1;
+        
+        for(let index = 0, total_rows = this.rows; index < total_rows; index++){
+            const lastColumnReference = document.querySelector(`.Table__row${index + 1}  .Table__input--reference`)
+            
+            const input = document.createElement('input')
+            input.classList.add("Table__input")
+            input.setAttribute('name', `Table__${index + 1}-${this.columns}`)
+            input.setAttribute('type', 'text')
+            
+            lastColumnReference.insertAdjacentElement('beforebegin', input)
+        }
+
+        const rowReference = document.querySelector(".Table__row--reference")
+        const card = document.createElement('div')
+        card.classList.add("Table__input")
+        card.classList.add("Table__input--reference")
+
+        rowReference.insertAdjacentElement("beforeend", card)
 
     }
 
