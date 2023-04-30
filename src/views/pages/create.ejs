@@ -1,12 +1,13 @@
 <p class="HomePage__p">Rellene la tabla para crear un archivo CSV con los datos especificados</p>
 
 <div class="TableContainer">
-    <form class="Table" id="Table">
+    <form class="Table" id="Table" method="post" action="/api/create">
     </form >
 
     <div class="TableContainer__options">
-        <button id="submitTable" class="ButtonComponent TableContainer__button">Crear</button>
+        <button id="submitTable" class="ButtonComponent TableContainer__button" form="Table">Crear</button>
         <button id="cancelTable" class="ButtonComponent TableContainer__button TableContainer__button--cancel">Cancelar</button>
+        <p class="HomePage__p HomePage__p--withoutMargin">Si deseas resetear las filas y columnas debes refrescar la pagina</p>
     </div>
 </div>
 

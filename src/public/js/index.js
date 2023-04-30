@@ -6,3 +6,5 @@ Table.create()
 
 document.getElementById("newColumn_button").addEventListener('click', e=> Table.newColumn(e) )
 document.getElementById("newRow_button").addEventListener('click', e=> Table.newRow(e) )
+
+document.getElementById("cancelTable").addEventListener("click", e=> Table.reset())

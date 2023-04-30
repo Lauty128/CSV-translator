@@ -7,6 +7,7 @@
 
 //------ Routes
     import { routerPage } from './src/routes/pages.routes.js';
+    import { apiPage } from './src/routes/api.routes.js';
 
 //------ Config
     const app = express()
@@ -20,14 +21,14 @@
 //------ Middlewares
     app.use(morgan('dev'));
     app.use(express.json())
-    app.use(express.urlencoded({ extended: false }))
+    app.use(express.urlencoded({ extended: false })) 
     app.use(expressEjsLayouts)
     app.use(express.static(path.join(__dirname, 'src/public')))
 
 
 //------ Routes
     app.use('/', routerPage)
-    app.get('/api', (req,res)=> res.send("API"))
+    app.use('/api', apiPage)
 
 //------ Listen
     app.listen(PORT, ()=>{

@@ -1,3 +1,4 @@
+
 class table{
     constructor(rows = 3, columns = 3){
         this.table = document.getElementById("Table")
@@ -26,12 +27,8 @@ class table{
         this.createReference()
     }
 
-    submit(){
-
-    }
-
     reset(){
-
+        this.table.reset()
     }
 
     newRow(e){
