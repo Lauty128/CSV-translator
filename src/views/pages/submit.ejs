@@ -1,0 +1,17 @@
+<p class="HomePage__p HomePage__p--Message">Sube el archivo <b>.csv</b> para poder continuar</p>
+
+<div class="TableContainer">
+    <form action="/api/create" method="post" id="Table" class="Table">
+        <label class="ButtonComponent button_submitFile" for="input_file">
+            <svg width="30px" height="30px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffff"><path d="M6 20h12M12 16V4m0 0l3.5 3.5M12 4L8.5 7.5" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Subir Archivo
+        </label>
+        <input type="file" name="File" id="input_file" accept=".csv" style="display: none;">
+    </form>
+    
+    <button id="submitFileButton" class="ButtonComponent--hide ButtonComponent TableContainer__button" form="Table">Subir</button>
+    <button id="comeBackButton" class="ButtonComponent TableContainer__button TableContainer__button--cancel ButtonComponent--hide">Volver</button>
+
+</div>
+
+<script src="js/index.js" type="module"></script>

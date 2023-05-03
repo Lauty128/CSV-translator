@@ -1,3 +1,9 @@
+export function convert_text_to_array(text){
+    let newText = text.split('\n')
+    
+    return newText.map(element=> element.split(','))
+}
+
 export function formatBody(body){
     const array_of_keys = Object.keys(body)
     const rows = countRows(array_of_keys);

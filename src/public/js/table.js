@@ -1,5 +1,4 @@
-
-class table{
+export class table{
     constructor(rows = 3, columns = 3){
         this.table = document.getElementById("Table")
         this.columns = columns
@@ -126,4 +125,21 @@ class table{
 
 }
 
-export default table
+export class inherited_table extends table{
+    printData(data){
+        for(let index_rows = 0, total_rows = this.rows; index_rows < total_rows; index_rows++){
+            for(let index_columns = 0, total_columns = this.columns; index_columns < total_columns; index_columns++){
+                const input = document.getElementsByName(`Table__${index_rows + 1}-${index_columns + 1}`)
+                input[0].value = data[index_rows][index_columns]
+            }
+        }
+    }
+}
+
+
+export function count_rows_columns(array){
+    const rows = array.length;
+    const columns = array[0].length;
+
+    return { columns, rows } 
+}
