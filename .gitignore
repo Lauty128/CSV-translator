@@ -1,6 +1,7 @@
 # Folders
 node_modules
 src/public/scss
+src/public/js-complete
 
 # Files
 .env
