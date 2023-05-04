@@ -1,6 +1,6 @@
 //---- Dependencies
 import fs from 'fs/promises'
-import path, { join } from 'path';
+import path from 'path';
 import * as url from 'url';
 
 //---- Utils

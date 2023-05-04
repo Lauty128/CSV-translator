@@ -2,7 +2,8 @@ export function convert_text_to_array(text){
   
     if(text[0] === '"'){
       let newText = text.split(/^"$|\n(?=(?:[^"]*"[^"]*")*[^"]*$)/g)
-      let returnText = newText.map(array=> array.split(','))
+      let returnText = newText.map(array=> array.split(/,(?=")/g))
+      console.log(returnText);
       if(returnText[returnText.length - 1].length > 1) returnText.pop();
       return returnText 
     }
@@ -21,7 +22,8 @@ export function formatBody(body){
     for(let index_row = 1; index_row <= rows; index_row++ ){
         const column_array = []
         for(let index_column = 1; index_column <= columns; index_column++ ){
-            column_array.push(body[`Table__${index_row}-${index_column}`])
+            const value = `"${body[`Table__${index_row}-${index_column}`]}"`
+            column_array.push(value)
         }
         data.push(column_array)
     }
