@@ -27,9 +27,8 @@ const createPage = async (req,res)=>{
     }) 
 
     try{
-        await fs.writeFile(url, text, {  flag:"as" })
+        await fs.writeFile(url, text, {  flag:"w" })
         res.download(url)
-        await fs.unlink(url)
     }
     catch(error){
         return res.status(500).json({
@@ -41,11 +40,14 @@ const createPage = async (req,res)=>{
 
 const submitPage = async (req,res)=>{
     const url = path.join(__dirname, '../download/fileToRead.csv')
+    // This file is stored through Multer
     try{
         const text_read = await fs.readFile(url, { encoding:'utf-8' })
         const text = convert_text_to_array(text_read);
-        console.log(text);
+        // Reads the file and stores its content in a constant
+
         await fs.unlink(url)
+        // Removes the file, becouse the content has been obtained
         res.status(200).json({
             data:text,
             message:"Archivo leido con exito",
@@ -53,7 +55,6 @@ const submitPage = async (req,res)=>{
         })
     }
     catch(error){
-        console.log(error);
         res.status(500).json({
             error,
             message:"Ocurrio un error mientras se leia el archivo",
