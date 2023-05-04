@@ -3,7 +3,7 @@ export function convert_text_to_array(text){
     if(text[0] === '"'){
       let newText = text.split(/^"$|\n(?=(?:[^"]*"[^"]*")*[^"]*$)/g)
       let returnText = newText.map(array=> array.split(/,(?=")/g))
-      console.log(returnText);
+      
       if(returnText[returnText.length - 1].length > 1) returnText.pop();
       return returnText 
     }
