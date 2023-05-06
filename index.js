@@ -5,7 +5,7 @@
     import path from 'path';
     import * as url from 'url';
 
-//------ Routes
+//------ Imported routes
     import { routerPage } from './src/routes/pages.routes.js';
     import { apiPage } from './src/routes/api.routes.js';
 
@@ -24,7 +24,6 @@
     app.use(express.urlencoded({ extended: false })) 
     app.use(expressEjsLayouts)
     app.use(express.static(path.join(__dirname, 'src/public')))
-
 
 //------ Routes
     app.use('/', routerPage)

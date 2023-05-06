@@ -9,3 +9,7 @@ export const createPage = (req,res) => {
 export const submitPage = (req,res) => {
     res.render('pages/submit')
 }
+
+export const intervalsPage = (req,res) => {
+    res.render('pages/intervals')
+}

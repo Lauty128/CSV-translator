@@ -5,5 +5,4 @@ src/public/js-complete
 
 # Files
 .env
-test.js
-texto.csv
+src/download/createdFile.csv
