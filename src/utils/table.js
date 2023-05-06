@@ -4,7 +4,7 @@ export function convert_text_to_array(text){
       let newText = text.split(/^"$|\n(?=(?:[^"]*"[^"]*")*[^"]*$)/g)
       let returnText = newText.map(array=> array.split(/,(?=")/g))
       
-      if(returnText[returnText.length - 1].length > 1) returnText.pop();
+      if(returnText[returnText.length - 1].every(element => element == '""')) returnText.pop();
       return returnText 
     }
 
