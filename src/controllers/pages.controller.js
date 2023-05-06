@@ -3,7 +3,7 @@ export const homePage = (req,res) => {
 }
 
 export const createPage = (req,res) => {
-    res.render('pages/create')
+    res.render('pages/table')
 }
 
 export const submitPage = (req,res) => {

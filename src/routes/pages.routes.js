@@ -10,7 +10,7 @@ const router = express.Router()
 
 //---- Routes
 router.get('/', homePage)
-router.get('/create', createPage)
+router.get('/table', createPage)
 router.get("/submit", submitPage)
 router.get("/intervals", intervalsPage)
 
