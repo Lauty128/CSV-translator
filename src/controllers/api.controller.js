@@ -4,7 +4,8 @@ import path from 'path';
 import * as url from 'url';
 
 //---- Utils
-import { formatBody, convert_text_to_array } from '../utils/table.js';
+import { formatBody, convert_text_to_array, get_numbers } from '../utils/table.js';
+import { Interval } from '../utils/intervals.js';
 
 //---- Config
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -63,4 +64,35 @@ const submitPage = async (req,res)=>{
     }
 }
 
-export default { submitPage, createPage }
+const intervalsPage = (req,res) => {
+    //---- Define data
+    const { type, quantity } = req.query
+    const numbers = get_numbers(req.body)
+
+    try{
+        //---- Call to interval class
+        const interval = new Interval(numbers)
+    
+        //---- take the value received
+        if(type === 'amplitude') interval.setAmplitude(quantity)
+        else interval.setNumersOfClasses(quantity)
+    
+        //---- Generate the table and generate data
+        interval.getTable()
+        const data = interval.getData()
+        
+        //---- response
+        res.json({
+            ...data,
+            status:200
+        })
+    }
+    catch(error){
+        res.status(500).json({
+            error,
+            message:"Ocurrio un error mientras se solicitaban los datos"
+        })
+    }
+}
+
+export default { submitPage, createPage, intervalsPage }

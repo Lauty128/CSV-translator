@@ -31,6 +31,17 @@ export function formatBody(body){
     return data
 }
 
+export function get_numbers(body){
+    const numbers = new Array()
+    const array_of_keys = Object.keys(body)
+    const regex = /^\d+$/
+    array_of_keys.forEach(element=> {
+        if(regex.test(body[element])) numbers.push(body[element])
+    })
+
+    return numbers
+}
+
 
 //---------- Utils of the Utils
 export function countRows(array_of_keys){

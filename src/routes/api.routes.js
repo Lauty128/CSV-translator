@@ -16,6 +16,7 @@ const router = express.Router()
 //---- Routes
 router.post('/create', apiController.createPage)
 router.post('/submit', upload.single('File'), apiController.submitPage)
+router.post('/intervals', apiController.intervalsPage)
 
 //---- Export
 export { router as apiPage }
