@@ -2,10 +2,27 @@
 
 
 <div class="TableContainer">
-    <form action="/api/create" method="post" id="Table" class="Table">
+    <form id="Table" class="Table" method="post" action="/api/intervals">
         
     </form>
     <p class="TableContainer__p">Los recuadros que no sean numeros o esten vacios seran salteados</p>
+
+    <div class="TableContainer__intervalOptions">
+        <h3 class="TableContainer__h3">Opciones de los intervalos</h3>
+        <div class="TableContainer__inputContainer">
+            <label for="intervalType-input">En que te quieres basar?</label>
+            <select name="" id="intervalType-input" class="Table__input">
+                <option value="amplitude">Amplitud</option>
+                <option value="classes">Numero de clases</option>
+            </select>
+        </div>
+        <span style="font-size: 2em;">:</span>
+        <div class="TableContainer__inputContainer">
+            <label for="quantity-input">Cantidad</label>
+            <input type="number" id="quantity-input" class="Table__input">
+        </div>
+    </div>
+
     <button id="createIntervalButton" class="ButtonComponent TableContainer__button" form="Table">Crear intervalo</button>
     <button id="comeBackButton" class="ButtonComponent TableContainer__button TableContainer__button--cancel">Volver</button>
 
