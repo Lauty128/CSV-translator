@@ -1,6 +1,6 @@
 //------ Dependencies
     import express from 'express';
-    import morgan from "morgan";
+    //import morgan from "morgan";
     import expressEjsLayouts from 'express-ejs-layouts';
     import path from 'path';
     import * as url from 'url';
@@ -19,7 +19,7 @@
     app.set('views', './src/views')
 
 //------ Middlewares
-    app.use(morgan('dev'));
+    //app.use(morgan('dev'));
     app.use(express.json())
     app.use(express.urlencoded({ extended: false })) 
     app.use(expressEjsLayouts)
