@@ -1,0 +1,133 @@
+//------------ HEADER
+.Header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    margin-top: 3em;
+
+    &__image{ width: 100px }
+    &__h1{
+        font-size: 3.5em;
+        color: $primary-color;
+        text-decoration: underline;
+    }
+}
+
+//------------ HEADER
+.Footer{
+    width: 90%;
+    margin: 4em auto 1em auto;
+    padding-top: 1em;
+    border-top: 2px solid $text-color;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em 5em;
+
+    &__box{ 
+        margin-left: 2em;
+        max-width: 300px;
+
+        & > span, & > a{
+            display: block;
+            font-size: 1.1em;
+            margin-top: .8em;
+        }
+
+        & > span{ color: $secundary-color; & > a{ color: $primary-color } }
+    
+        & > a{ color: $primary-color; }
+    }
+
+}
+
+@media screen and (max-width:500px) {
+    .Header{
+        &__image{ width: 80px }
+        &__h1{ font-size: 2.5em }
+    }
+}
+
+//-------------------------------------------
+//------------ BUTTON COMPONENT -------------
+//-------------------------------------------
+.ButtonComponent{
+    background-color: $primary-color;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: .5em;
+}
+.ButtonComponent__label{ font-size: 1.7em; margin-left: .5em; vertical-align: text-bottom; }
+.ButtonComponent--hide{ visibility: hidden  }
+
+//-------------------------------------------------------------------------------------
+//------------------------------------ TABLE ------------------------------------------
+//-------------------------------------------------------------------------------------
+.TableContainer{
+    width: 80%;
+    margin: 1em auto 2em auto;
+
+    &__p{ color:$text-color }
+    &__button{ width: 100%; display: block; margin-top: .5em; font-size: 1em; color: #fff }
+    &__button--cancel{ background-color: $text-color }
+
+    &__intervalOptions{
+        padding: .6em 0 2em 0;
+        @include flex(flex-start);
+        flex-wrap: wrap;
+        gap: 1em 1.5em;
+    }
+
+    &__h3{ width: 100% }
+    &__inputContainer > label{ display: block }
+}
+
+.Table{
+    overflow-x: scroll;
+    padding: .5em;
+    margin-bottom: 1em;
+
+    &__row{
+        margin-top: .7em;
+        display: flex;
+        gap: .7em;
+        width: fit-content;
+    }
+
+    &__input{
+        width: 170px;
+        height: 40px;
+        padding: .7em .5em;
+        outline: none;
+        border: 2px solid $primary-color;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    &__input--reference{
+        background-color: $primary-color;
+        color: #fff;
+        font-weight: 700;
+        width: 170px
+    }
+}
+#newRow_button, #newColumn_button{ cursor: pointer }
+
+//------- Table Scroll
+.Table::-webkit-scrollbar {width: 8px; height: 8px }
+.Table::-webkit-scrollbar-track { background: transparent;}
+.Table::-webkit-scrollbar-thumb {
+    background-color: $text-color;
+    border-radius: 20px;
+    border: 10px solid transparent;
+}
+
+@media screen and (max-width: 800px){
+    .TableContainer{ width: 95% }
+}
+
+@media screen and (max-width: 500px){
+    .TableContainer{ width: 99% }
+}
