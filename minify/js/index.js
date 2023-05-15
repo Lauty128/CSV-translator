@@ -46,7 +46,9 @@ document.querySelector(".TableContainer").addEventListener("click", async e=>{
         case 'cancelIntervalButton':
             if(localStorage.getItem('interval_table')){
                 localStorage.removeItem('interval_table')
-                window.location.href = '/intervals'
+                Table.rows = 3
+                Table.columns = 3
+                Table.create()
             }
         break;
 
