@@ -1,10 +1,10 @@
-import { table, inherited_table, count_rows_columns } from "./table.js";
+import { table, inherited_table, count_rows_columns, count_rows_columns_of_simple_array } from "./table.js";
 import { parseIntervalData } from './intervals.js'
 
 let Table;
 
 //------------- Table
-if(window.location.pathname == '/table' || window.location.pathname == '/intervals'){
+if(window.location.pathname == '/table'){
     if(localStorage.getItem('table_data')){
         const data = JSON.parse(localStorage.getItem('table_data'))
         const { rows, columns } = count_rows_columns(data)
@@ -43,6 +43,13 @@ document.querySelector(".TableContainer").addEventListener("click", async e=>{
             submitInterval()
         break;
 
+        case 'cancelIntervalButton':
+            if(localStorage.getItem('interval_table')){
+                localStorage.removeItem('interval_table')
+                window.location.href = '/intervals'
+            }
+        break;
+
         case "comeBackButton":
             window.location.href = '/'
         break;
@@ -51,6 +58,16 @@ document.querySelector(".TableContainer").addEventListener("click", async e=>{
 
 //---------------------- Intervals Page
 if(window.location.pathname == '/intervals'){
+    //---------- Load to the table
+    if(localStorage.getItem('interval_table')){
+        const data = JSON.parse(localStorage.getItem('interval_table'))
+        const {rows, columns} = count_rows_columns_of_simple_array(data)
+
+        Table = new inherited_table(rows,columns)
+        Table.printNumbers(data)
+    }
+    else Table = new table()
+
     //--------- This avoids the default behavior of the form 
     document.querySelector(".Table").addEventListener('submit', e=> e.preventDefault())
 }
@@ -68,6 +85,7 @@ async function submitInterval(){
     if(response.status == 200){
         delete response.status
         localStorage.setItem('table_data', JSON.stringify(response.table))
+        localStorage.setItem('interval_table', JSON.stringify(response.numbers))
         delete response.table
         localStorage.setItem('interval_data', JSON.stringify(response))
         window.location.href = '/table'

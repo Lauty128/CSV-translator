@@ -142,8 +142,28 @@ export class inherited_table extends table{
             }
         }
     }
+
+    printNumbers(data){
+        let index = 0
+        for(let index_rows = 0, total_rows = this.rows; index_rows < total_rows; index_rows++){
+            for(let index_columns = 0, total_columns = this.columns; index_columns < total_columns; index_columns++){
+                const input = document.getElementsByName(`Table__${index_rows + 1}-${index_columns + 1}`)    
+                input[0].value = data[index] || ''
+                index++
+            }
+        }
+    }
 }
 
+export function count_rows_columns_of_simple_array(array){
+    const length = array.length;
+    //if(length == 9) return { rows: 3, columns:3 }
+
+    const rows = Math.round(Math.sqrt(length));
+    const columns = Math.round(array.length/rows)
+
+    return{ rows, columns }
+}
 
 export function count_rows_columns(array){
     const rows = array.length;
